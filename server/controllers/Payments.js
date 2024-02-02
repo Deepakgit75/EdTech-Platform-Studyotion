@@ -7,6 +7,7 @@ const { default: mongoose } = require("mongoose");
 const { paymentSuccessEmail } = require("../mail/templates/paymentSuccessEmail");
 const crypto = require("crypto");
 const CourseProgress = require("../models/CourseProgress");
+// require("dotenv").config();
 
 //initiate the razorpay order
 exports.capturePayment = async(req, res) => {
@@ -52,7 +53,7 @@ exports.capturePayment = async(req, res) => {
         const paymentResponse = await instance.orders.create(options);
         res.json({
             success:true,
-            message:paymentResponse,
+            message:"Order created", paymentResponse,
         })
     }
     catch(error) {
@@ -74,7 +75,7 @@ exports.verifyPayment = async(req, res) => {
     if(!razorpay_order_id ||
         !razorpay_payment_id ||
         !razorpay_signature || !courses || !userId) {
-            return res.status(200).json({success:false, message:"Payment Failed"});
+            return res.status(400).json({success:false, message:"Payment Failed"});
     }
 
     let body = razorpay_order_id + "|" + razorpay_payment_id;
@@ -89,7 +90,7 @@ exports.verifyPayment = async(req, res) => {
             //return res
             return res.status(200).json({success:true, message:"Payment Verified"});
         }
-        return res.status(200).json({success:"false", message:"Payment Failed"});
+        return res.status(400).json({success:"false", message:"Payment verification Failed"});
 
 }
 
