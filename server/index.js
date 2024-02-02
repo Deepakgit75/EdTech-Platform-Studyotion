@@ -23,7 +23,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(
 	cors({
-		origin:"'https://studymotion-backend.onrender.com",
+		origin:"https://studymotion-backend.onrender.com",
 		credentials:true,
 	})
 )
