@@ -41,14 +41,14 @@ export async function buyCourse(token, courses, userDetails, navigate, dispatch)
                                 {
                                     Authorization: `Bearer ${token}`,
                                 })
-        // console.log("status",orderResponse.data);
+        console.log("status",orderResponse.data);
 
         if(!orderResponse.data) {
             throw new Error(orderResponse.data.message);
         }
         //options
         const options = {
-            key: "rzp_test_elYOzOPym0aMmj",
+            key: process.env.RAZORPAY_KEY,
             currency: orderResponse.data.paymentResponse.currency,
             amount: `${orderResponse.data.paymentResponse.amount}`,
             order_id:orderResponse.data.paymentResponse.id,
