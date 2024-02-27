@@ -23,7 +23,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(
 	cors({
-		origin:"https://studymotion-backend.onrender.com",
+		origin:"https://vercel.com/deepaks-projects-3bc3f2f0/studymotion-frontend",
 		credentials:true,
 	})
 )
@@ -34,11 +34,11 @@ module.exports = function (app) {
     app.use(
         '/api/v1',
         createProxyMiddleware({
-            target:'https://vercel.com/deepaks-projects-3bc3f2f0/studymotion-frontend',
+            target:'https://studymotion-backend.onrender.com',
             changeOrigin:true,
             secure: false,
             headers:{
-                'Access-Control-Allow-Origin': 'https://studymotion-backend.onrender.com'
+                'Access-Control-Allow-Origin': 'https://vercel.com/deepaks-projects-3bc3f2f0/studymotion-frontend'
             }
         })
     )
