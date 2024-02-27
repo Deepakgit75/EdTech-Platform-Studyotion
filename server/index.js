@@ -34,11 +34,11 @@ module.exports = function (app) {
     app.use(
         '/api/v1',
         createProxyMiddleware({
-            target:'https://studymotion-backend.onrender.com',
+            target:'https://vercel.com/deepaks-projects-3bc3f2f0/studymotion-frontend',
             changeOrigin:true,
             secure: false,
             headers:{
-                'Access-Control-Allow-Origin': 'http://localhost:3000'
+                'Access-Control-Allow-Origin': 'https://studymotion-backend.onrender.com'
             }
         })
     )
