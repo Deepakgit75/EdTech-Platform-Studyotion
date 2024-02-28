@@ -14,7 +14,7 @@ export default function Instructor() {
   const [courses, setCourses] = useState([])
 
   useEffect(() => {
-    ;(async () => {
+    (async () => {
       setLoading(true)
       const instructorApiData = await getInstructorData(token)
       const result = await fetchInstructorCourses(token)
@@ -47,6 +47,7 @@ export default function Instructor() {
           Let's start something new
         </p>
       </div>
+
       {loading ? (
         <div className="spinner"></div>
       ) : courses.length > 0 ? (
@@ -93,7 +94,7 @@ export default function Instructor() {
             <div className="flex items-center justify-between">
               <p className="text-lg font-bold text-richblack-5">Your Courses</p>
               <Link to="/dashboard/my-courses">
-                <p className="text-xs font-semibold text-yellow-50">View All</p>
+                <p className="text-sm font-semibold text-yellow-50">View All</p>
               </Link>
             </div>
             <div className="my-4 flex items-start space-x-6">
@@ -140,3 +141,4 @@ export default function Instructor() {
     </div>
   )
 }
+

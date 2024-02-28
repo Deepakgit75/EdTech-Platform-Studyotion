@@ -6,6 +6,8 @@ import { setPaymentLoading } from "../../slices/courseSlice";
 import { resetCart } from "../../slices/cartSlice";
 
 
+
+
 const {COURSE_PAYMENT_API, COURSE_VERIFY_API, SEND_PAYMENT_SUCCESS_EMAIL_API} = studentEndpoints;
 
 function loadScript(src) {
@@ -48,7 +50,7 @@ export async function buyCourse(token, courses, userDetails, navigate, dispatch)
         }
         //options
         const options = {
-            key: process.env.RAZORPAY_KEY,
+            key: "rzp_test_elYOzOPym0aMmj",
             currency: orderResponse.data.paymentResponse.currency,
             amount: `${orderResponse.data.paymentResponse.amount}`,
             order_id:orderResponse.data.paymentResponse.id,

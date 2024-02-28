@@ -8,6 +8,8 @@ Chart.register(...registerables);
 const InstructorChart = ({courses}) => {
 
     const [currChart, setCurrChart] = useState("students");
+    const [active, setActive] = useState(false);
+
 
     //functio to genertae random colors
     const getRandomColors = (numColors) => {
@@ -44,6 +46,15 @@ const InstructorChart = ({courses}) => {
         ]
     }
 
+    const handleIncome = () => {
+        setCurrChart("income");
+        setActive(false);
+    }
+
+    const handleStudent = () => {
+        setCurrChart("students");
+        setActive(true);
+    }
 
     //create options
     const options = {
@@ -52,22 +63,24 @@ const InstructorChart = ({courses}) => {
 
 
   return (
-    <div>
-      <p>Visualise</p>
-      <div className='flex gap-x-5'>
-        <button
-        onClick={() => setCurrChart("students")}
-        >
-            Student
-        </button>
+    <div className='w-11/12 bg-richblack-800 flex flex-col '>
+        <p className='text-richblack-5 text-lg font-bold mt-2 ml-2'>Visualise</p>
+        <div className='flex gap-x-5 justify-center items-center -mt-2 '>
+            <button 
+            className={`cursor-pointer gap-x-2 rounded-md py-2 px-5 font-semibold ${active ? " border-2 border-white text-richblack-5" : "border-2" } text-richblack-800 bg-yellow-100 active:scale-105 transition-all duration-200  `}
+            onClick={handleStudent}
+            >
+                Student
+            </button>
 
-        <button
-        onClick={() => setCurrChart("income")}
-        >
-            Income
-        </button>
-      </div>
-      <div>
+            <button
+            className={`cursor-pointer gap-x-2 rounded-md py-2 px-5 font-semibold ${active ? " border-2" : " border-2 border-white text-richblack-5 " } text-richblack-800 bg-yellow-100 active:scale-105 transition-all duration-200 `}
+            onClick={handleIncome}
+            >
+                Income
+            </button>
+        </div>
+      <div className='flex justify-center items-center w-1/2'>
         <Pie 
             data={currChart === "students" ? chartDataForStudents : chartDataForIncome}
             options={options}
