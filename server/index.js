@@ -23,7 +23,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(
 	cors({
-		origin:"https://studymotion-frontend.vercel.app/",
+		origin:"https://studymotion-frontend.vercel.app",
 		credentials:true,
 	})
 )
