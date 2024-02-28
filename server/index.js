@@ -23,7 +23,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(
 	cors({
-		origin:"https://vercel.com/deepaks-projects-3bc3f2f0/studymotion-frontend",
+		origin:"https://studymotion-frontend.vercel.app/",
 		credentials:true,
 	})
 )
@@ -38,7 +38,7 @@ module.exports = function (app) {
             changeOrigin:true,
             secure: false,
             headers:{
-                'Access-Control-Allow-Origin': 'https://vercel.com/deepaks-projects-3bc3f2f0/studymotion-frontend'
+                'Access-Control-Allow-Origin': 'https://studymotion-frontend.vercel.app/'
             }
         })
     )
