@@ -28,22 +28,6 @@ app.use(
 	})
 )
 
-const { createProxyMiddleware } = require("http-proxy-middleware");
-
-module.exports = function (app) {
-    app.use(
-        '',
-        createProxyMiddleware({
-            target:'https://studymotion-backend.onrender.com',
-            changeOrigin:true,
-            secure: false,
-            headers:{
-                'Access-Control-Allow-Origin': 'https://studymotion-frontend.vercel.app/'
-            }
-        })
-    )
-}
-
 app.use(
 	fileUpload({
 		useTempFiles:true,
